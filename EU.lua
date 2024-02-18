@@ -1,4 +1,5 @@
 local EasyUtils = {}
+EasyUtils.Drawings = {}
 
 EasyUtils.Functions = {} do
     function EasyUtils.Functions:dumpgc(path: string, filtertbl: table)
@@ -19,6 +20,37 @@ EasyUtils.Functions = {} do
             end
         end
     end
+
+
+
+
+
+    -- Drawing funcs
+    function EasyUtils.Functions:newdraw(type: string, props: table, where: table)
+        assert(type, 'missing_arg: type')
+        assert(props, 'missing_arg: props')
+        local proptbl = props
+        local whereidx = where or EasyUtils.Drawings
+
+        local draw = Drawing.new(type)
+        for prop, val in pairs(proptbl) do
+            draw[prop] = val
+        end
+
+        table.insert(whereidx, draw)
+        return draw
+    end
+
+    function EasyUtils.Functions:editdraw(drawing, props: table)
+        assert(drawing, 'missing_arg: drawing')
+        assert(props, 'missing_arg: props')
+        local proptbl = props
+
+        for prop, val in pairs(proptbl) do
+            drawing[prop] = val
+        end
+        return drawing
+    end
 end
 
-return EasyUtils;
+return EasyUtils
