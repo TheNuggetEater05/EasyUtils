@@ -1,7 +1,7 @@
 local EasyUtils = {}
 
 EasyUtils.Functions = {} do
-    function EasyUtil.Functions:dumpgc(path: string, filtertbl: table)
+    function EasyUtils.Functions:dumpgc(path: string, filtertbl: table)
         assert(path, 'missing_arg = path')
 
         local filters = filtertbl or {}
@@ -21,4 +21,4 @@ EasyUtils.Functions = {} do
     end
 end
 
-return EasyUtil;
+return EasyUtils;
